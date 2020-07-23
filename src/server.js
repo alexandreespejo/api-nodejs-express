@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const products = require('./routes/products')
-const connection = require('./database/connection')
+
+app.use(express.json())
 
 app.use('/products', products)
 
