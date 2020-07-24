@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-const products = require('./routes/products')
+const comments = require('./routes/comments')
 
 app.use(express.json())
 
-app.use('/products', products)
+app.use('/comments', comments)
 
 app.listen(process.env.PORT,() => {
     console.log("Server is running")
