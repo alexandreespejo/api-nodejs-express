@@ -11,6 +11,5 @@ const Comments = connection.define('comments', {
     
 })
 
-Comments.sync()
 
 module.exports = Comments
