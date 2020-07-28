@@ -1,4 +1,5 @@
-const Users = require('../models/start')
+const {Users} = require('../models/start')
+const {hash} = require('bcryptjs')
 
 class UsersController {
 
@@ -11,8 +12,9 @@ class UsersController {
 
     async create(req, res){
         const{name,pass} = req.body
+        const incryptedPass = await hash(pass,10)
 
-        await Users.create({name,pass}).then(() => {
+        await Users.create({name,pass:incryptedPass}).then(() => {
             return res.status(201).json({Response:"User Created"})
         }).catch(() => {
 
