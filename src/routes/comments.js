@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const CommentsController = require('../controllers/Comments')
 
-router.get('/list/:id?', CommentsController.list)
+router.get('/comments/:id?', CommentsController.list)
 
-router.post('/create', CommentsController.create)
+router.post('/comments', CommentsController.create)
 
-router.put('/update/:id', CommentsController.update)
+router.put('/comments/:id', CommentsController.update)
 
-router.delete('/delete/:id', CommentsController.delete)
+router.delete('/comments/:id', CommentsController.delete)
 
 
 
