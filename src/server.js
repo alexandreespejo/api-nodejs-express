@@ -5,9 +5,9 @@ const users = require('./routes/users')
 
 app.use(express.json())
 
-app.use('/comments', comments)
+app.use(comments)
 
-app.use('/users', users)
+app.use(users)
 
 
 app.listen(process.env.PORT,() => {
