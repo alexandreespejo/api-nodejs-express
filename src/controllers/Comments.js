@@ -1,4 +1,4 @@
-const Comments = require('../models/start')
+const {Comments} = require('../models/start')
 
 class CommentsController{
 
@@ -35,9 +35,9 @@ class CommentsController{
     }
 
     async create(req, res){
-        const {text} = req.body
+        const {text,userId} = req.body
         
-        await Comments.create({text}).then(() => {
+        await Comments.create({text,userId}).then(() => {
             return res.status(201).json({Response:"Comments Created"})
         }).catch((err) => {
             return res.status(404).json({Response:"Comments not Created ",err})
