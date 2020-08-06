@@ -1,15 +1,15 @@
 const Users = require('./Users')
-const Comments = require('./Comments')
+const Accommodations = require('./Accommodations')
 
-Users.hasMany(Comments)
-Comments.belongsTo(Users) 
+Users.hasMany(Accommodations)
+Accommodations.belongsTo(Users) 
 
 Users.sync({alter:true}).then(() => {
-    Comments.sync({alter:true})
+    Accommodations.sync({alter:true})
 })
 
 
 module.exports = {
     Users,
-    Comments
+    Accommodations
 }
