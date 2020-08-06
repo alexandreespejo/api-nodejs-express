@@ -1,11 +1,14 @@
-const express = require('express')
+import express from 'express'
+
+import accommodations from'./routes/accommodations'
+import users from './routes/users'
+
 const app = express()
-const comments = require('./routes/comments')
-const users = require('./routes/users')
+
 
 app.use(express.json())
 
-app.use(comments)
+app.use(accommodations)
 
 app.use(users)
 
