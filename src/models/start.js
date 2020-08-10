@@ -1,15 +1,19 @@
 const Users = require('./Users')
 const Accommodations = require('./Accommodations')
+const Reserves = require('./Reserves')
+const connection = require('../database/connection')
 
 Users.hasMany(Accommodations)
 Accommodations.belongsTo(Users) 
+Reserves.hasOne(Accommodations)
+Reserves.hasOne(Users)
+Users.hasOne(Reserves)
 
-Users.sync({alter:true}).then(() => {
-    Accommodations.sync({alter:true})
-})
+connection.sync()
 
 
 module.exports = {
     Users,
-    Accommodations
+    Accommodations,
+    Reserves
 }
