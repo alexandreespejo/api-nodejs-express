@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express') 
 
 const router = express.Router()
 const AccommodationsController = require('../controllers/Accommodations')
@@ -13,4 +13,4 @@ router.delete('/Accommodations/:id', AccommodationsController.delete)
 
 
 
-export default router
+module.exports = router

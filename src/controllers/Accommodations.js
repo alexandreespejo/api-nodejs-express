@@ -1,4 +1,4 @@
-const {Accommodations} = require('../models/start')
+const {Accommodations} = require('../models/Start')
 
 class AccommodationsController{
 

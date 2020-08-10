@@ -1,7 +1,7 @@
-import express from 'express'
+const express =require( 'express')
 
-import accommodations from'./routes/accommodations'
-import users from './routes/users'
+const accommodations =require('./routes/accommodations')
+const users =require( './routes/users')
 
 const app = express()
 

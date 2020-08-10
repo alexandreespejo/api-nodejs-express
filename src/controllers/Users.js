@@ -1,4 +1,4 @@
-const {Users} = require('../models/start')
+const {Users} = require('../models/Start')
 const {hash} = require('bcryptjs')
 
 class UsersController {
