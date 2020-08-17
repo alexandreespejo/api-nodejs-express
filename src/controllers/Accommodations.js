@@ -2,7 +2,7 @@ const {Accommodations} = require('../models/Start')
 
 class AccommodationsController{
 
-    async list(req, res){
+    async index(req, res){
         const {id} = req.params
 
         if(id!=undefined){
@@ -53,7 +53,7 @@ class AccommodationsController{
         })
     }
 
-    async delete(req, res){
+    async destroy(req, res){
         const {id} = req.params
 
         await Accommodations.destroy({where:{id}}).then(() => {

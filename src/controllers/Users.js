@@ -1,13 +1,15 @@
-const {Users} = require('../models/Start')
+const {Users} = require('../models/Index')
 const {hash} = require('bcryptjs')
 
 class UsersController {
 
-    async list(req, res){
-
-        await Users.findAll().then(users => {
+    async index(req, res){
+        try {
+            const users = await Users.findAll()
             return res.status(200).json({users})
-        })
+        }catch(error){
+            return res.status(404).send()
+        }
     }
 
     async create(req, res){

@@ -1,4 +1,4 @@
-const Reserves = require("../models/Start")
+const Reserves = require("../models/Index")
 
 class ReservesController {
 
@@ -27,4 +27,4 @@ class ReservesController {
 
 }
 
-module.exports = new Reserves
+module.exports = new ReservesController
