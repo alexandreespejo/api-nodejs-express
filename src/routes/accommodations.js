@@ -3,13 +3,13 @@ const express = require('express')
 const router = express.Router()
 const AccommodationsController = require('../controllers/Accommodations')
 
-router.get('/Accommodations/:id?', AccommodationsController.list)
+router.get('/accommodations', AccommodationsController.index)
 
-router.post('/Accommodations', AccommodationsController.create)
+router.post('/accommodations', AccommodationsController.create)
 
-router.put('/Accommodations/:id', AccommodationsController.update)
+router.put('/accommodations', AccommodationsController.update)
 
-router.delete('/Accommodations/:id', AccommodationsController.delete)
+router.delete('/accommodations', AccommodationsController.destroy)
 
 
 
