@@ -2,6 +2,8 @@ const express =require( 'express')
 
 const accommodations =require('./routes/accommodations')
 const users =require( './routes/users')
+const reserves =require( './routes/reserves')
+
 
 const app = express()
 
@@ -9,7 +11,7 @@ const app = express()
 app.use(express.json())
 
 app.use(accommodations)
-
+app.use(reserves)
 app.use(users)
 
 
