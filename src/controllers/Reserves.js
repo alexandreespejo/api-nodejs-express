@@ -2,19 +2,25 @@ const Reserves = require("../models/Index")
 
 class ReservesController {
 
-    index(req,res){
-         Reserves.findAll().then(reserve => {
-           return res.status(200).json({reserve})
-        })
+    async index(req,res){
+        
+        try{
+         const reserves = await Reserves.findAll()
+           return res.status(200).json({reserves})
+        }catch(err){
+            return res.status(404).json({err})            
+        }
     }
 
-    create(req,res){
+    async create(req,res){
         const{reserveDate,exitDate}=req.body
-        Reserves.create({reserveDate,exitDate}).then(() => {
-            return res.status(201).send()
-        }).catch(() =>{
-            return res.status(404).send()
-        })
+
+        try{
+            const reserves = await Reserves.create({reserveDate,exitDate})
+            return res.status(201).json({reserves})
+        }catch(err){
+            return res.status(404).json({err})
+        }
     }
 
     update(req,res){

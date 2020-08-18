@@ -7,21 +7,20 @@ class UsersController {
         try {
             const users = await Users.findAll()
             return res.status(200).json({users})
-        }catch(error){
-            return res.status(404).send()
+        }catch(err){
+            return res.status(404).json({err})
         }
     }
 
     async create(req, res){
         const{name,pass} = req.body
+        try{
         const incryptedPass = await hash(pass,10)
-
-        await Users.create({name,pass:incryptedPass}).then(() => {
-            return res.status(201).json({Response:"User Created"})
-        }).catch(() => {
-
-            return res.status(404).json({Response:"User not Created"})
-        })
+        const users = await Users.create({name,pass:incryptedPass})
+            return res.status(201).json({users})
+        }catch(err){
+            return res.status(404).json({err})
+        }
     }
 }
 

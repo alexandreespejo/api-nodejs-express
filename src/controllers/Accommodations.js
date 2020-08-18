@@ -6,61 +6,66 @@ class AccommodationsController{
         const {id} = req.params
 
         if(id!=undefined){
-            
-            await Accommodations.findAll({where:{id}}).then(accommodations => {
+            try{
+
+                const accommodations = await Accommodations.findAll({where:{id}})
 
                 if(accommodations.length==0)
-                    return res.status(200).json({Response:"accommodations not found"})
+                    return res.status(404).send()
                 else
                     return res.status(200).json({accommodations})
 
-            }).catch((err) => {
+            }catch(err){
                 return res.status(404).json({err})
-            })
+            }
 
         }else{
+            try{
 
-            await Accommodations.findAll().then(accommodations => {
+                const accommodations = await Accommodations.findAll()
 
                 if(accommodations.length==0)
-                    return res.status(200).json({Response:"accommodations not found"})
+                    return res.status(404).send()
                 else
                     return res.status(200).json({accommodations})
                     
-            }).catch((err) => {
+            }catch(err){
                 return res.status(404).json({err})
-            })
+            }
 
         }
     }
 
     async create(req, res){
         const {text,userId} = req.body
-        
-        await Accommodations.create({text,userId})
-            .then(() => res.status(201).json({Response:"Comments Created"}))
-            .catch((err) => res.status(404).json({Response:"Comments not Created ",err}))
+        try{
+            const accommodations = await Accommodations.create({text,userId})
+            res.status(201).json({accommodations})
+        }catch(err){
+            res.status(404).json({err})
+        }
     }
 
     async update(req, res){
         const {id} = req.params
         const {text} = req.body
 
-        await Accommodations.update({text},{where:{id}}).then(() => {
-            return res.status(200).json({Response:"accommodations Updated"})
-        }).catch((err) =>{
-            return res.status(404).json({Response:"accommodations not Updated ",err})
-        })
+        try{
+        const accommodations = await Accommodations.update({text},{where:{id}})
+            return res.status(200).json({accommodations})
+        }catch(err){
+            return res.status(404).json({err})
+        }
     }
 
     async destroy(req, res){
         const {id} = req.params
-
-        await Accommodations.destroy({where:{id}}).then(() => {
-            return res.status(200).json({Response:"accommodations deleted"})
-        }).catch(() => {
-            return res.status(404).json({Response:"accommodations not deleted ",err})
-        })
+        try{
+        const accommodations = await Accommodations.destroy({where:{id}})
+            return res.status(200).json({accommodations})
+        }catch(err){
+            return res.status(404).json({err})
+        }
     }
 
 }
